@@ -19,14 +19,15 @@ import java.util.List;
 
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
-import org.springframework.batch.integration.samples.payments.config.CommonConfig;
-import org.springframework.batch.integration.samples.payments.util.SpringIntegrationUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.messaging.Message;
+
+import com.sunlinei.cms.batch.common.util.SpringIntegrationUtils;
+import com.sunlinei.cms.batch.config.BatchConfiguration;
 
 /**
  * Starts the Spring Context and will initialize the Spring Integration routes.
@@ -55,7 +56,7 @@ public final class Main {
 						+ "\n                                                         "
 						+ "\n=========================================================" );
 
-		final ConfigurableApplicationContext context = SpringApplication.run(CommonConfig.class);
+		final ConfigurableApplicationContext context = SpringApplication.run(BatchConfiguration.class);
 
 		final JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
 

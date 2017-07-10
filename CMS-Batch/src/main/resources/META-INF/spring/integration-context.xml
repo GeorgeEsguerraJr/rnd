@@ -24,13 +24,13 @@
 	</int:channel>
 
 	<int-file:inbound-channel-adapter id="pollDataFile"
-		directory="classpath:/data/paymentImport"
+		directory="classpath:/data/incomingFile"
 		channel="files"/>
 
 	<int:transformer id="prepareJobLaunchRequest"
 		input-channel="files" output-channel="requests">
 		<bean class="org.springframework.batch.integration.samples.payments.FileMessageToJobRequest">
-			<property name="job" ref="importPayments"/>
+			<property name="job" ref="importIncomingJob"/>
 			<property name="fileParameterName" value="input.file.name"/>
 		</bean>
 	</int:transformer>
